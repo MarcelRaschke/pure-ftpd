@@ -954,7 +954,7 @@ aliases are available. You can get this list at any time by typing
 --(switches sorted by ##standard switches## lexical order)--
 
 -0  --notruncate
--1  --logpid                <file>
+-1  --logpid
 -4  --ipv4only
 -6  --ipv6only
 -a  --trustedgid            <gid>
@@ -1053,7 +1053,7 @@ aliases are available. You can get this list at any time by typing
 -K  --keepallfiles
 
 -l  --login                 <auth> or <auth>:<config file>
--1  --logpid                <file>
+-1  --logpid
 -L  --limitrecursion        <number:number>
 
 -c  --maxclientsnumber      <number>
