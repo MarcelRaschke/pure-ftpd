@@ -357,7 +357,13 @@ static int listencnx(void)
     int clientfd;
     int ret = -1;
     const size_t socketpath_len = strlen(socketpath);
+    const size_t max_len = sizeof(((struct sockaddr_un *) 0)->sun_path) - (size_t) 1U;
 
+    if (socketpath_len > max_len) {
+        errno = ENAMETOOLONG;
+        perror("Socket path too long");
+        goto bye;
+    }
     if ((saddr = malloc(sizeof(*saddr) + socketpath_len +
                         (size_t) 1U)) == NULL) {
         perror("No more memory to listen to anything");
