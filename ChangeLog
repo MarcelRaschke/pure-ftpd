@@ -1,3 +1,18 @@
+* Version 1.0.53:
+ - Added support for IP limits in inetd mode.
+ - Added support for "ldapi://" URI scheme for LDAP. Contributed by
+@Zeault, thanks!
+ - Fixed AUTHD_CLIENT_SNI_NAME not being set when use_extcert is disabled.
+Contributed by @kohlerdominik, thanks!
+ - Fixed LDAP authentication when connecting to Active Directory with
+an empty DN. Contributed by @chunhualiu, thanks!
+ - Fixed an out of bounds read in the MLSD command.
+ - Fixed state not being reset when PORT/EPRT parsing fails.
+ - Added a connect timeout for data connections.
+ - Added client port range validation in EPRT command.
+ - Fixed potential close(-1) call.
+ - Configuration files now support optional quotes for addresses.
+
 * Version 1.0.52:
  - The QUIT command is now accepted during a transfer. Contributed by
 Andrew Topp, thanks!
