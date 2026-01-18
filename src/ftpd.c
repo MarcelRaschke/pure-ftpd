@@ -4922,6 +4922,28 @@ static void doit(void)
     if (checkvalidaddr(&peer) == 0) {
         die(425, LOG_ERR, MSG_INVALID_IP);
     }
+
+    if (maxusers > 0U) {
+#ifdef NO_STANDALONE
+        users = daemons(serverport);
+#else
+# ifdef NO_INETD
+        users = nb_children;
+# else
+        if (standalone) {
+            users = nb_children;
+        } else {
+            users = daemons(serverport);
+        }
+# endif
+#endif
+        if (users > maxusers) {
+            addreply(421, MSG_MAX_USERS, (unsigned long) maxusers);
+            doreply();
+            _EXIT(1);
+        }
+    }
+
 #ifndef DONT_LOG_IP
     for (;;) {
         int eai;
@@ -4952,27 +4974,6 @@ static void doit(void)
     replycode = 220;
 
     fill_atomic_prefix();
-
-    if (maxusers > 0U) {
-#ifdef NO_STANDALONE
-        users = daemons(serverport);
-#else
-# ifdef NO_INETD
-        users = nb_children;
-# else
-        if (standalone) {
-            users = nb_children;
-        } else {
-            users = daemons(serverport);
-        }
-# endif
-#endif
-        if (users > maxusers) {
-            addreply(421, MSG_MAX_USERS, (unsigned long) maxusers);
-            doreply();
-            _EXIT(1);
-        }
-    }
     /* It's time to add a new entry to the ftpwho list */
 #ifdef FTPWHO
     {
