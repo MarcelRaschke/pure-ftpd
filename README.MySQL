@@ -141,7 +141,7 @@ one account to one specific address.
 Multiple statements can be used using a semicolon (";") as a delimiter.
 
 Please note that a login can only contain common characters: A...Z, a...z,
-0...9, -, ., _, space, :, @ and ' . For security purposes, other characters
+0...9, -, ., _, space, :, @, + and ' . For security purposes, other characters
 are forbidden.
 
 You can also remove uid and gid fields in your tables and use default
