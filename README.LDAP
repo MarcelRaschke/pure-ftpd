@@ -174,8 +174,8 @@ userPassword: {scrypt}$7$C6..../....YzvCLmJDYJpH76BxlZB9fCpCEj2AbGQHoLiG9I/VRO1$
 'userPassword' is the password hashed with the system 'crypt' function,
 SCRYPT or ARGON2.
 
-Please note that a login can only contains common characters: A...Z, a...z,
-0...9, -, ., _, space, :, @ and ' . For paranoia purposes, other characters
+Please note that a login can only contain common characters: A...Z, a...z,
+0...9, -, ., _, space, @ and ' . For paranoia purposes, other characters
 are forbidden.
 
 If you don't want to use posixAccount objects, you can edit src/log_ldap.h
@@ -223,8 +223,8 @@ FTPUploadRatio: 1
 The example is mostly self-explanatory. FTPQuotaMBytes is the quota size in
 megabytes. FTPDownloadBandwidth and FTPUploadBandwidth are in KB/sec.
 
-FTPStatus should be either "enabled" or "disabled". If the FTPStatus field
-exists and is set to anything except "enabled", the user will not be
+FTPStatus should be "enabled" or "TRUE" to allow login. If the FTPStatus field
+exists and is set to anything except "enabled" or "TRUE", the user will not be
 permitted to log in. If the FTPStatus field does not exist, the user *WILL*
 be allowed to log in as normal, to allow LDAP users without the PureFTPdUser
 objectClass.
