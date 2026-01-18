@@ -54,6 +54,7 @@ static const char *uptime(void)
         close(f);
         return "?";
     }
+    buf[r] = 0;
     close(f);
     u = strtoul(buf, NULL, 10);
     if (SNCHECK(snprintf(buf, sizeof buf, "%lu days, %lu:%02lu:%02lu",
