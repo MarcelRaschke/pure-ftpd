@@ -70,7 +70,6 @@ $dialog \
 'without-privsep' "Disable privilege separation" off \
 'with-boring' "Display only boring messages" off \
 'with-brokenrealpath' "If your C library has a broken realpath()" off \
-'with-probe-random-dev' "To check for /dev/*random at run-time" off \
 'with-minimal' "Build only a minimal server for embedded systems" off \
 'with-paranoidmsg' "Use paranoid, but not admin-friendly messages" off \
 'with-sysquotas' "Use system (not virtual) quotas" off \
