@@ -855,25 +855,30 @@ static void do_ipv6_port(char *p, char delim)
 {
     char *deb;
     struct sockaddr_storage a;
-    unsigned int port;
+    char *endptr;
+    unsigned long port;
 
     deb = p;
     while (*p && strchr("0123456789abcdefABCDEF:", *p) != NULL) {
         p++;
     }
-    port = (unsigned int) atoi(p + 1);
-    if (*p != delim || port <= 0U || port > 65535U) {
+    if (*p != delim) {
+        goto nope;
+    }
+    *p++ = 0;
+    port = strtoul(p, &endptr, 10);
+    if (p == endptr || *endptr != delim ||
+        port <= 0UL || port > 65535UL) {
         nope:
         (void) close(datafd);
         datafd = -1;
         addreply_noformat(501, MSG_SYNTAX_ERROR_IP);
         return;
     }
-    *p++ = 0;
     if (generic_aton(deb, &a) != 0) {
         goto nope;
     }
-    doport2(a, port);
+    doport2(a, (unsigned int) port);
 }
 
 #ifndef MINIMAL
