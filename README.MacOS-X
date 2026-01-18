@@ -10,7 +10,7 @@ Available options are:
 
 --with-mysql
 	Build with mysql support
---with-postgresql
+--with-pgsql
 	Build with postgresql support
 --with-virtualchroot
 	Follow symbolic links even for chrooted accounts
