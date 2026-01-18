@@ -5,6 +5,7 @@
 #include "ftpd.h"
 #include "ftpwho-update.h"
 #include "globals.h"
+#include "messages.h"
 #include "tls_extcert.h"
 #include "tls_extcert_p.h"
 #include "safe_rw.h"
@@ -19,9 +20,13 @@ static signed char cert_finalized;
 void tls_extcert_parse(const char * const file)
 {
     size_t file_len;
+    const size_t max_len = sizeof(((struct sockaddr_un *) 0)->sun_path) - (size_t) 1U;
 
     if (file == NULL || (file_len = strlen(file)) <= (size_t) 0U) {
         return;
+    }
+    if (file_len > max_len) {
+        die(421, LOG_ERR, MSG_PATH_TOO_LONG);
     }
     if ((saddr = malloc(sizeof(*saddr) + file_len +
                         (size_t) 1U)) == NULL) {
