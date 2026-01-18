@@ -3384,9 +3384,10 @@ void doretr(char *name)
             memcpy(shm_data_cur->filename, name, sl);
             shm_data_cur->filename[sl] = 0;
         } else {
-            memcpy(shm_data_cur->filename,
-                   &name[sl - sizeof shm_data_cur->filename - 1U],
-                   sizeof shm_data_cur->filename);
+            const size_t keep = sizeof shm_data_cur->filename - (size_t) 1U;
+
+            memcpy(shm_data_cur->filename, &name[sl - keep], keep);
+            shm_data_cur->filename[keep] = 0;
         }
         ftpwho_unlock();
     }
@@ -4316,9 +4317,10 @@ void dostor(char *name, const int append, const int autorename)
             memcpy(shm_data_cur->filename, name, sl);
             shm_data_cur->filename[sl] = 0;
         } else {
-            memcpy(shm_data_cur->filename,
-                   &name[sl - sizeof shm_data_cur->filename - 1U],
-                   sizeof shm_data_cur->filename);
+            const size_t keep = sizeof shm_data_cur->filename - (size_t) 1U;
+
+            memcpy(shm_data_cur->filename, &name[sl - keep], keep);
+            shm_data_cur->filename[keep] = 0;
         }
         ftpwho_unlock();
     }
