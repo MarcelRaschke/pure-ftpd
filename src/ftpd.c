@@ -2339,6 +2339,10 @@ void doport2(struct sockaddr_storage a, unsigned int p)
         char hbuf[NI_MAXHOST];
         char peerbuf[NI_MAXHOST];
 
+        hbuf[0] = '?';
+        hbuf[1] = 0;
+        peerbuf[0] = '?';
+        peerbuf[1] = 0;
         if (getnameinfo((struct sockaddr *) &a, STORAGE_LEN(a),
                         hbuf, sizeof hbuf, NULL,
                         (size_t) 0U, NI_NUMERICHOST) != 0 ||

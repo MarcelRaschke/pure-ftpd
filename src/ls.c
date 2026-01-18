@@ -12,6 +12,10 @@
 # include "tls.h"
 #endif
 
+#ifndef SIZE_MAX
+# define SIZE_MAX ((size_t) -1)
+#endif
+
 #ifdef WITH_DMALLOC
 # include <dmalloc.h>
 #endif
@@ -576,7 +580,9 @@ static PureFileInfo *sreaddir(char **names_pnt)
         return NULL;
     }
     files_info_size = CHUNK_SIZE / sizeof *files_info;
-    if ((files_info = malloc(files_info_size * sizeof *files_info)) == NULL) {
+    if (files_info_size == 0U ||
+        files_info_size > SIZE_MAX / sizeof *files_info ||
+        (files_info = malloc(files_info_size * sizeof *files_info)) == NULL) {
         closedir(d);
         free(names);
         return NULL;
@@ -588,12 +594,20 @@ static PureFileInfo *sreaddir(char **names_pnt)
         name_len = strlen(de->d_name) + (size_t) 1U;
         while (names_counter + name_len >= names_size) {
             char *new_names;
+            size_t grow;
 
             if (name_len >= CHUNK_SIZE) {
-                names_size += name_len + CHUNK_SIZE;
+                if (name_len > SIZE_MAX - CHUNK_SIZE) {
+                    goto nomem;
+                }
+                grow = name_len + CHUNK_SIZE;
             } else {
-                names_size += CHUNK_SIZE;
+                grow = CHUNK_SIZE;
             }
+            if (names_size > SIZE_MAX - grow) {
+                goto nomem;
+            }
+            names_size += grow;
             if ((new_names = realloc(names, names_size)) == NULL) {
                 nomem:
                 closedir(d);
@@ -605,8 +619,13 @@ static PureFileInfo *sreaddir(char **names_pnt)
         }
         while ((files_info_counter + (size_t) 1U) >= files_info_size) {
             PureFileInfo *new_files_info;
+            size_t grow = CHUNK_SIZE / sizeof *files_info;
 
-            files_info_size += (CHUNK_SIZE / sizeof *files_info);
+            if (grow == 0U ||
+                files_info_size > SIZE_MAX / sizeof *files_info - grow) {
+                goto nomem;
+            }
+            files_info_size += grow;
             if ((new_files_info = realloc(files_info,
                                           files_info_size * sizeof *files_info)) == NULL) {
                 goto nomem;
