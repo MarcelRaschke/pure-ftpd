@@ -8,6 +8,7 @@
 #include "globals.h"
 #include "log_extauth.h"
 #include "log_extauth_p.h"
+#include "messages.h"
 #include "safe_rw.h"
 #ifdef WITH_TLS
 # include "tls.h"
@@ -23,9 +24,13 @@ static signed char auth_finalized;
 void pw_extauth_parse(const char * const file)
 {
     size_t file_len;
+    const size_t max_len = sizeof(((struct sockaddr_un *) 0)->sun_path) - (size_t) 1U;
 
     if (file == NULL || (file_len = strlen(file)) <= (size_t) 0U) {
         return;
+    }
+    if (file_len > max_len) {
+        die(421, LOG_ERR, MSG_PATH_TOO_LONG);
     }
     if ((saddr = malloc(sizeof(*saddr) + file_len +
                         (size_t) 1U)) == NULL) {
