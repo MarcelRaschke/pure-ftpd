@@ -377,6 +377,8 @@ void doreply(void);
 void sighandler(int sig);
 void prevent(char *arg);
 unsigned int daemons(in_port_t server_port);
+unsigned int daemons_perip(in_port_t server_port,
+                           const struct sockaddr_storage *peer);
 void logfile(const int facility, const char *format, ...)
     __attribute__ ((format(printf, 2, 3)));
 char *skip_telnet_controls(const char *str);

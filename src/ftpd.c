@@ -4944,6 +4944,27 @@ static void doit(void)
         }
     }
 
+#ifndef NO_INETD
+    if (maxip > 0U) {
+# ifdef NO_STANDALONE
+        users = daemons_perip(serverport, &peer);
+# else
+        if (!standalone) {
+            users = daemons_perip(serverport, &peer);
+        }
+# endif
+# ifdef NO_STANDALONE
+        if (users >= maxip) {
+# else
+        if (!standalone && users >= maxip) {
+# endif
+            addreply(421, MSG_MAX_USERS_IP, (unsigned long) maxip);
+            doreply();
+            _EXIT(1);
+        }
+    }
+#endif
+
 #ifndef DONT_LOG_IP
     for (;;) {
         int eai;
