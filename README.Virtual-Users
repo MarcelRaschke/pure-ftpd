@@ -74,7 +74,7 @@ To add a new user, use the following syntax:
                          [-z <hhmm>-<hhmm>] [-m]
 
 Let's create "joe", whose home directory will be /home/ftpusers/joe . The
-system account associated with "joe" is "ftpusers".
+system account associated with "joe" is "ftpuser".
 
             pure-pw useradd joe -u ftpuser -d /home/ftpusers/joe
 
@@ -261,7 +261,7 @@ switch:
 pure-pw passwd joe -m
 
 This command will change Joe's password in pureftpd.passwd *and* commit the
-change to /etc/pureftpd.pwd .
+change to /etc/pureftpd.pdb .
 
 
   ------------------------ ENABLING VIRTUAL USERS ------------------------
