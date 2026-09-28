@@ -41,7 +41,7 @@ Then, install the server as usual:
            
 
 Before running the server, you have to create a configuration file. Why a
-configuration file instead of simple command-line options? you may ask.
+configuration file instead of simple command-line options? You may ask.
 For security reasons, you may want to hide how to connect to your
 MySQL server. And as command-line options can be discovered by local users
 (with 'ps auxwww' for instance), it's more secure to use a configuration
@@ -78,7 +78,7 @@ use system (/etc/passwd) accounts when an account is not found in a MySQL
 database, use -l mysql:/etc/pureftpd-mysql.conf -l unix
 
 
-     ------------------------ TABLES STRUCTURES ------------------------
+     ------------------------ TABLE STRUCTURES ------------------------
      
      
 Pure-FTPd is very flexible and users can be stored in any way in SQL tables.

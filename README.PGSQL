@@ -2,7 +2,7 @@
        ----------------------- PostgreSQL SUPPORT ------------------------
 
 
-When PostgreSQL is enabled, all account info are fetched from a central
+When PostgreSQL is enabled, all account information is fetched from a central
 Postgres database.
 
 To compile the server with PostgreSQL support, you first have to build and
@@ -38,7 +38,7 @@ Then, install the server as usual:
            
 
 Before running the server, you have to create a configuration file. Why a
-configuration file instead of simple command-line options? you may ask.
+configuration file instead of simple command-line options? You may ask.
 Because for security reasons, you may want to hide how to connect to your
 PostgreSQL server. And as command-line options can be discovered by local users
 (with 'ps auxwww' for instance), it's more secure to use a configuration
@@ -74,7 +74,7 @@ use system (/etc/passwd) accounts when an account is not found in a PostgreSQL
 database, use -l pgsql:/etc/pureftpd-pgsql.conf -l unix
 
 
-     ------------------------ TABLES STRUCTURES ------------------------
+     ------------------------ TABLE STRUCTURES ------------------------
      
      
 Pure-FTPd is very flexible and users can be stored in any way in SQL tables.

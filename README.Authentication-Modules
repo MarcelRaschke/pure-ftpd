@@ -6,25 +6,24 @@
 Anybody can add new custom authentication methods to Pure-FTPd without
 recompiling anything, using "authentication modules".
 
-To enable it, you must ./configure with --with-extauth, or
+To enable it, you must run ./configure with --with-extauth, or
 --with-everything. Linux binary packages have it enabled by default.
 
 Here's how they work:
 
 1) A client connects to the FTP server and issues a login/password pair.
 
-2) The FTP server connects to a local separate daemon, called 'pure-authd'.
-Data transmitted to that daemon is: user's login, user's password, the IP
-address that user connected to, the local port that user connected to and
-the user's remote IP address.
+2) The FTP server connects to a separate local daemon called 'pure-authd'.
+The data transmitted to that daemon includes the user's login, password, IP
+address, local port, and remote IP address.
 
 3) pure-authd spawns an authentication program. It can be anything,
 including a shell script. The program is given the collected info (login,
 password, IP addresses, etc) as environment variables.
 
 4) The authentication program replies (to the standard output) with the
-user's home directory, quota, ratio, bandwidth and if authentication was
-successful or not.
+user's home directory, quota, ratio, bandwidth, and whether authentication
+was successful.
 
 5) pure-authd relays this info to pure-ftpd.
 
@@ -33,8 +32,8 @@ very flexible as anyone can easily write his own authentication programs.
 And they can run non-root, chrooted, with limited capabilities, etc.
 
 Communication between pure-ftpd and pure-authd is done through a local Unix
-socket. It's recommended to put that socket in a directory where non-trusted
-users have no write access to.
+socket. It's recommended to put that socket in a directory where untrusted
+users have no write access.
 
 Authentication programs can read the following environment variables to get
 info about the user trying to authenticate:
@@ -62,7 +61,7 @@ end
 
 Note the final 'end' keyword. It's mandatory.
 
-Here's the list of recognized tokens ('xxx' has of course to be filled):
+Here's the list of recognized tokens ('xxx' must, of course, be filled in):
 
 * auth_ok:xxx
 
@@ -110,7 +109,7 @@ The maximal total size for this account, in bytes.
 
 The maximal number of files for this account.
  
-* ratio_upload:xxx and radio_download:xxx (optional)
+* ratio_upload:xxx and ratio_download:xxx (optional)
 
 The user must match a ratio_upload:ratio_download ratio.
 

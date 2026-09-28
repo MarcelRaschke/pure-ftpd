@@ -19,7 +19,7 @@ to support this command.
 the program is called via a web server (CGI interface) . Output is a
 full HTML page with the initial content\-type header. This option is
 automatically enabled if an environment variable called GATEWAY_INTERFACE is
-found. This is the default if you can the program from a CGI\-enabled web
+found. This is the default if you call the program from a CGI\-enabled web
 server.
 .TP 
 \fB\-h\fR
@@ -57,8 +57,8 @@ Output well\-formed XML data for post\-processing.
 .SH "FILES"
 .LP 
 \fB@LOCALSTATEDIR@/run/pure-ftpd/\fP
-Scoreboard directory. Should always owned by root and on a lockable
-filesystem.
+Scoreboard directory. It should always be owned by root and reside on a
+lockable filesystem.
 
 .SH "ENVIRONMENT VARIABLES"
 .TP 

@@ -10,12 +10,12 @@ pure\-certd [\fI\-p\fP <\fI/path/to/pidfile\fP>] [\fI\-u\fP uid] [\fI\-g\fP gid]
 .LP
 pure\-certd is a daemon that forks an authentication program, waits for a certificate path as a reply, and returns it to an application server.
 .LP
-pure\-certd listens to a local Unix socket. A new connection to that socket should send pure\-authd the following structure:
+pure\-certd listens to a local Unix socket. A new connection to that socket should send pure\-certd the following structure:
 .IP
 sni_name:xxx
 end
 .LP
-These content is passed to the authentication program, as an environment variable:
+This content is passed to the authentication program as an environment variable:
 .IP
 CERTD_SNI_NAME
 .LP

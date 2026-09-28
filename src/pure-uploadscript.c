@@ -121,7 +121,7 @@ static int readpipe(const int upload_file_fd,
 }
 
 /*
- * When we are using virtual hosts, the file looks like :
+ * When using virtual hosts, the file looks like:
  * <ip address>:<path>
  */
 

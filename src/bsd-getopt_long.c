@@ -388,7 +388,7 @@ static int pure_getopt_internal(int nargc, char * const *nargv,
      * Check long options if:
      *  1) we were passed some
      *  2) the arg is not just "-"
-     *  3) either the arg starts with -- we are pure_getopt_long_only()
+     *  3) either the arg starts with -- or we are pure_getopt_long_only()
      */
     if (long_options != NULL && pure_place != nargv[pure_optind] &&
         (*pure_place == '-' || (flags & FLAG_LONGONLY))) {

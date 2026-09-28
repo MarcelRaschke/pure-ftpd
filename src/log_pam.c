@@ -8,7 +8,7 @@
  *        Internet: johnsonm@redhat.com
  *
  *
- *  This majority of this code was lifted from the src.rpm for imap
+ *  The majority of this code was lifted from the src.rpm for imap
  *  in the RedHat-4.2 updates directory
  *  by Kelley Lingerfelt redhat@cococo.net
  */
@@ -127,8 +127,8 @@ static int PAM_conv(int num_msg,
     return PAM_CONV_ERR;
 }
 
-/* Solaris throws warning about incompatible pointer types, it does not
-   include const on pam_message */
+/* Solaris warns about incompatible pointer types because pam_message lacks
+   const. */
 
 static struct pam_conv PAM_conversation = {
     &PAM_conv, NULL

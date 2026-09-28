@@ -238,13 +238,13 @@ static size_t argv_lth;
 
 /*
  * An authentication handler has three functions:
- * - One - parse() - is called with an optional file name, that contains a
+ * - One - parse() - is called with an optional file name that contains a
  *   configuration file, or whatever is passed in the -l command-line switch
  *   for this authentication.
  * - Another one, check() is called when the user has entered his password.
  *   It should fill an AuthResult structure.
  * - The last one - exit() - is called when the session is closed, and
- *   should free all internal allocated structures.
+ *   should free all internally allocated structures.
  */
 
 typedef struct Authentication_ {

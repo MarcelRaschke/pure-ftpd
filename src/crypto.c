@@ -12,7 +12,7 @@
 # include <dmalloc.h>
 #endif
 
-/* Convert a buffer to an hex string.
+/* Convert a buffer to a hex string.
  * size_digest is the output length including the trailing \0
  */
 

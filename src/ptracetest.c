@@ -8,7 +8,7 @@
  * better to avoid usage of privilege separation if untrusted users have
  * shell access.
  *
- * Compile and run with :
+ * Compile and run with:
  *
  * make ptracetest
  * ./ptracetest

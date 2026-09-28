@@ -8,7 +8,7 @@ pure\-authd [\fI\-p\fP <\fI/path/to/pidfile\fP>] [\fI\-u\fP uid] [\fI\-g\fP gid]
 
 .SH "DESCRIPTION"
 .LP
-pure\-authd is a daemon that forks an authentication program, waits for an authentication reply, and feed them to an application server.
+pure\-authd is a daemon that forks an authentication program, waits for an authentication reply, and feeds it to an application server.
 .LP
 pure\-authd listens to a local Unix socket. A new connection to that socket should feed pure\-authd the following structure:
 .IP
@@ -82,7 +82,7 @@ The maximal number of files for this account.
 .TP
 \fBratio_upload:\fRxxx \fI(optional)\fR
 .TP
-\fBradio_download:\fRxxx \fI(optional)\fR
+\fBratio_download:\fRxxx \fI(optional)\fR
 The user must match a ratio_upload:ratio_download ratio.
 .LP
 \fIOnly one authentication program is forked at a time. It must return quickly.\fR

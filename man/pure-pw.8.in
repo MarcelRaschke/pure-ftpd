@@ -35,7 +35,7 @@ pure\-pw mkdb    [<puredb_database_file> [\-f passwd_file]] [\-F puredb_file]
 pure\-pw list    [\-f passwd_file]
 .SH "DESCRIPTION"
 .LP 
-Virtual users is a simple mechanism to store a list of users, with their
+Virtual users are a simple mechanism to store a list of users with their
 password, name, uid, directory, etc. It's just like /etc/passwd. But it's
 not /etc/passwd. It's a different file, only for FTP.
 .br 

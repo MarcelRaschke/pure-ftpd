@@ -127,8 +127,8 @@
 #if defined(SENDFILE_FREEBSD) || defined(SENDFILEV_SOLARIS) || \
     defined(SENDFILE_HPUX) || \
     (defined(SENDFILE_LINUX) && defined(SENDFILE64_LINUX))
-/* Old Linux kernels/glibcs that can't handle 64-bits sendfile() aren't
- * supported any more. */
+/* Old Linux kernels/glibcs that cannot handle 64-bit sendfile() are no
+ * longer supported. */
 #else
 # define SENDFILE_NONE
 #endif
@@ -138,10 +138,9 @@
 #endif
 
 /*
- * sendfile() is very kernel dependant. It's probable that you have platforms
- * that require specific #include before sys/sendfile.h . So to enhance
- * portability, we only include sys/sendfile.h on operating systems known
- * to be supported
+ * sendfile() is very kernel dependent. Some platforms probably require a
+ * specific #include before sys/sendfile.h. To enhance portability, we include
+ * sys/sendfile.h only on operating systems known to be supported.
  */
 #if (defined(SENDFILE_LINUX) || defined(SENDFILEV_SOLARIS)) && defined(HAVE_SYS_SENDFILE_H)
 # include <sys/sendfile.h>

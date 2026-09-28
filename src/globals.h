@@ -35,7 +35,7 @@ GLOBAL(const size_t cmdsize, PATH_MAX + 16U);
 GLOBAL0(char cmd[PATH_MAX + 32U]);   /* command line - about 30 chars for command */
 GLOBAL0(char wd[PATH_MAX + 1U]); /* current working directory */
 GLOBAL0(char *root_directory);   /* root directory, for chroot'd environments */
-GLOBAL0(signed char loggedin);   /* != 0 if the user if logged in */
+GLOBAL0(signed char loggedin);   /* != 0 if the user is logged in */
 GLOBAL0(char account[MAX_USER_LENGTH + 1U]); /* user login */
 GLOBAL0(char *renamefrom);
 GLOBAL0(in_port_t serverport);   /* local server port */

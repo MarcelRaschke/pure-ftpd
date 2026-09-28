@@ -149,7 +149,7 @@ int sfgets(void)
             if (cmd[scanned] == '\r') {
                 seen_r = 1;
             }
-#ifdef RFC_CONFORMANT_PARSER                   /* disabled by default, intentionnaly */
+#ifdef RFC_CONFORMANT_PARSER                   /* Disabled by default, intentionally. */
             else if (cmd[scanned] == 0) {
                 cmd[scanned] = '\n';
             }

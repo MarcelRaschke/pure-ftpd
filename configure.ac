@@ -70,7 +70,7 @@ AX_CHECK_COMPILE_FLAG([-Wdiv-by-zero], [CFLAGS="$CFLAGS -Wdiv-by-zero"])
 AX_CHECK_COMPILE_FLAG([$CFLAGS -Wno-unused-command-line-argument],
 [CFLAGS="$CFLAGS -Wno-unused-command-line-argument"])
 
-AC_ARG_VAR([CWFLAGS], [define to compilation flags for generating extra warnings])
+AC_ARG_VAR([CWFLAGS], [compilation flags for generating extra warnings])
 AX_CHECK_COMPILE_FLAG([-Wall], [CWFLAGS="$CWFLAGS -Wall"])
 AX_CHECK_COMPILE_FLAG([$CWFLAGS -Wextra], [CWFLAGS="$CWFLAGS -Wextra"])
 
@@ -1066,7 +1066,7 @@ int main(void)
 }
 ]])],[
 AC_MSG_RESULT(yes)
-AC_DEFINE(SAFE_GETGROUPS_0,,[Define is getgroups(0, NULL) works on your system])
+AC_DEFINE(SAFE_GETGROUPS_0,,[Define if getgroups(0, NULL) works on your system])
 ],[AC_MSG_RESULT(no)
 ],[AC_MSG_RESULT(suppose that it doesn't)])
 

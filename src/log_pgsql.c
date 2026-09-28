@@ -72,7 +72,7 @@ static char *pw_pgsql_escape_string(PGconn * const id_sql_server,
      * The "to" buffer is allocated on the heap, not on the stack, if
      * PQescapeStringConn() is buggy, the stack shouldn't be already
      * smashed at this point, but data from other malloc can be corrupted and
-     * bad things can happen. It make sense to wipe this area as soon as
+     * bad things can happen. It makes sense to wipe this area as soon as
      * possible instead of doing anything with the heap. We'll end up with
      * a segmentation violation, but without any possible exploit.
      */
@@ -97,7 +97,7 @@ static char *pw_pgsql_escape_string(PGconn * const id_sql_server,
  * full of \L, \I, \P, \R and \D.
  * query is a buffer to handle the result.
  * query_len is the size of the buffer.
- * returns the buffer @ if successful, NULL otherwise.   -frank.
+ * Returns the buffer if successful, NULL otherwise.   -frank.
  */
 
 static char *sqlsubst(const char *orig_str, char * const query,

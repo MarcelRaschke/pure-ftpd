@@ -726,7 +726,7 @@ static int add_new_pw_line(FILE * const fp2, const PWInfo * const pwinfo)
         return -1;
     }
     if (pwinfo->deny_client_ip != NULL) {
-        fprintf(fp2, "%s", pwinfo->deny_client_ip);   /* denied local ip */
+        fprintf(fp2, "%s", pwinfo->deny_client_ip);   /* denied client IP */
     }
     if (fprintf(fp2, PW_LINE_SEP) < 0) {
         return -1;

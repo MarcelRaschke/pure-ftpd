@@ -144,7 +144,7 @@ MaxIdleTime                  15
 
 
 # Please note that LDAPConfigFile, MySQLConfigFile, PAMAuthentication and
-# UnixAuthentication can be used specified once, but can be combined
+# UnixAuthentication can each be specified once, but can be combined
 # together. For instance, if you use MySQLConfigFile, then UnixAuthentication,
 # the SQL server will be used first. If the SQL authentication fails because the
 # user wasn't found, a new attempt will be done using system authentication.
@@ -155,7 +155,7 @@ MaxIdleTime                  15
 
 
 # 'ls' recursion limits. The first argument is the maximum number of
-# files to be displayed. The second one is the max subdirectories depth.
+# files to be displayed. The second one is the maximum subdirectory depth.
 
 LimitRecursion               10000 8
 
@@ -363,7 +363,7 @@ AnonymousCantUpload          no
 
 
 # This option is useful on servers where anonymous upload is
-# allowed. When the partition is more that percententage full,
+# allowed. When the partition is more than the specified percentage full,
 # new uploads are disallowed.
 
 MaxDiskUsage                   99

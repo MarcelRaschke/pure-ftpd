@@ -7,9 +7,9 @@ pure\-quotacheck \- Update virtual quota files for Pure\-FTPd
 pure\-quotacheck \fI\-u username/gid\fP \fI\-d home directory\fP [\fI\-g group/gid\fP]
 .SH "DESCRIPTION"
 .LP
-pure\-quotacheck create a \fB.ftpquota\fR file in the specified directory.
+pure\-quotacheck creates a \fB.ftpquota\fR file in the specified directory.
 .br
-This file contains the current file and size of the directory, and it is used by Pure\-FTPd when virtual quotas are enabled.
+This file contains the directory's current file count and size, and Pure\-FTPd uses it when virtual quotas are enabled.
 .br
 It's recommended to periodically run pure\-quotacheck for every user, in crontabs.
 .SH "OPTIONS"
@@ -18,10 +18,10 @@ It's recommended to periodically run pure\-quotacheck for every user, in crontab
 Scans the specified <\fIdirectory\fP>.
 .TP
 \fB\-g\fR <\fIgroup or gid\fP>
-Sets the group files will be scanned as. This is optional: if a user name is passed to \fB\-u</fR>, group are automatically retrieved.
+Sets the group under which files will be scanned. This is optional: if a user name is passed to \fB\-u</fR>, the group is automatically retrieved.
 .TP
 \fB\-u\fR <\fIuser or uid\fP>
-Set the user name files will be scanned as. This is mandatory, and it can't be "root".
+Sets the user under which files will be scanned. This is mandatory and cannot be "root".
 .TP
 \fB\-h\fR
 Output usage information and exit.
@@ -45,7 +45,7 @@ pure\-quotacheck performs a chroot() call to the home directory. It never traver
 .br
 pure\-quotacheck only scans real files (no socket, no pipe, etc) .
 .br
-pure\-quotacheck enforces read access on directories to prevent against people doing chmod 0 before a quota scan.
+pure\-quotacheck enforces read access on directories to prevent users from running chmod 0 before a quota scan.
 .br
 pure\-quotacheck enforces write access on the home directory to properly write the .ftpquota file.
 .br

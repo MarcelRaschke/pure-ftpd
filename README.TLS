@@ -5,8 +5,8 @@
 Pure-FTPd supports encryption of the control and data channels using
 TLS security mechanisms.
 
-When this extra security layer is enabled, login and passwords are no more
-sent as cleartext. Neither other commands sent by your client nor replies
+When this extra security layer is enabled, logins and passwords are no longer
+sent in cleartext. Neither other commands sent by your client nor replies
 made by the server are sent in cleartext.
 
 
@@ -47,7 +47,7 @@ CertFile                     /etc/ssl/private/pure-ftpd.pem
 or
 CertFileAndKey               /etc/pure-ftpd.pem /etc/pure-ftpd.key
 
-The former is for a bundle, the later loads two files.
+The former is for a bundle; the latter loads two files.
 
 If you already have a certificate for another service on the same host
 (commonly for HTTPS), you can use it as well with Pure-FTPd and other
@@ -181,7 +181,7 @@ pure-certd command-line options follow:
 -u      --uid   <opt>
 
 The mandatory ones are --run and --socket. The former indicates what command
-to run in order to return actions and certificates, the later is a path to the
+to run in order to return actions and certificates; the latter is a path to the
 local UNIX socket that will be created in order to communicate with the FTP
 server.
 

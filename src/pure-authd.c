@@ -312,7 +312,7 @@ static void process(const int clientfd)
         close(pfds[0]);
         return;
     }
-    /* now, we are in the child */
+    /* Now, we are in the child. */
     close(clientfd);
     close(kindy);
     close(pfds[0]);                    /* close the input side of the pipe */

@@ -3,7 +3,7 @@
        ------------------------ VIRTUAL USERS ------------------------
 
 
-Virtual users is a simple mechanism to store a list of users, with their
+Virtual users are a simple mechanism to store a list of users with their
 password, name, uid, directory, etc. It's just like /etc/passwd. But it's
 not /etc/passwd. It's a different file, only for FTP.
 
@@ -85,21 +85,21 @@ filesystem, use -D instead of -d.
 
 You don't need to create /home/ftpusers/joe if you run pure-ftpd with the
 -j (--createhome) switch. With that switch, home directories will
-automatically be created when users will log in for the first time.
+automatically be created when users log in for the first time.
 
-The "-z" option allow a user to connect only during a range of day time.
-For instance, with -z 0900-1800, joe will only be able to connect from 9 am
-to 18 pm. Warning: a user that connected during authorized hours can
+The "-z" option allows a user to connect only during a range of day time.
+For instance, with -z 0900-1800, joe will only be able to connect from 9 a.m.
+to 6 p.m. Warning: a user that connected during authorized hours can
 finish his session after these authorized hours.
 
 -r and -R are handy to restrict where the user can connect from. They can be
 followed by a simple IP/mask pair (-r 192.168.1.0/24), multiple pairs
-separated by a coma (-r 192.168.1.0/24,10.1.0.0/16,127.0.0.1/32), single IPs
+separated by a comma (-r 192.168.1.0/24,10.1.0.0/16,127.0.0.1/32), single IPs
 (-r 192.168.1.4,10.1.1.5), host names (-r bla.bla.net,yopcitron.com), or any
 combination of those.
 
 -y is to restrict the number of concurrent sessions a user can have
-at the same time. '' or 0 mean unlimited. Avoid this feature on very loaded
+at the same time. '' or 0 means unlimited. Avoid this feature on very loaded
 servers. Use per-ip limits instead.
 
 Ok, "joe" has been created. By default, the list of virtual users is stored
@@ -120,7 +120,7 @@ systems, but is only present on some Linux distributions.
 Argon2 and scrypt are the recommended functions, and require pure-ftpd to be
 compiled in presence of libsodium. Note that a login attempt will require up
 to 64 Mb memory, and 100% of a CPU core. The number of simultaneously allowed
-sessions should be tuned accordingly to avoid resources starvation.
+sessions should be tuned accordingly to avoid resource starvation.
 
 
        ------------------------ CHANGING INFO ------------------------
@@ -187,7 +187,7 @@ To change the password of a user, use "pure-pw passwd":
 To review info about one user, reading the /etc/pureftpd.passwd file is ok,
 but it's not really human-friendly.
 
-It's why you can use "pure-pw show", whose syntax is:
+That is why you can use "pure-pw show", whose syntax is:
 
          pure-pw show    <login> [-f <passwd file>]
          
@@ -229,7 +229,7 @@ changes you make to that file, until you commit them.
 
 Committing changes really means that a new file is created from
 /etc/pureftpd.passwd (or whatever file name you choose) . That new file is a
-PureDB file. It contains exactly the same info than the other file. But in
+PureDB file. It contains exactly the same information as the other file. But in
 that file, accounts are sorted and indexed for faster access, even with
 thousands of accounts. PureDB files are binary files, don't try to view them
 or your terminal will beep like hell.
@@ -239,7 +239,7 @@ be called /etc/pureftpd.pdb (as always, choose whatever name you like):
 
                                 pure-pw mkdb
                         
-this reads /etc/pureftpd.passwd and creates /etc/pureftpd.pdb by default, but
+This reads /etc/pureftpd.passwd and creates /etc/pureftpd.pdb by default, but
 to read another file, add the pdb file, optionally followed by -f <passwd file>
 
 For instance:
@@ -253,7 +253,7 @@ key.
 
 There's no need to restart the pure-ftpd server to commit changes.
 
-You can also change something to the text passwords file (add users, change
+You can also change something to the text password file (add users, change
 password, delete users, etc) and automatically run 
 "pure-pw mkdb /etc/pureftpd.pdb" afterwards. To do so, just use the -m
 switch:

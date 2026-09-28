@@ -188,7 +188,7 @@ fi
 touch "$prefix/pure-ftpd" 2> /dev/null || instfailure="yes"
 if [ -z "$instfailure" ] ; then
   $dialog --msgbox \
-  "Congratulation, the server is now installed on your system.\nPlease read the documentation to know how to run it." \
+   "Congratulations, the server is now installed on your system.\nPlease read the documentation to learn how to run it." \
   10 78
 else
   $dialog --msgbox \

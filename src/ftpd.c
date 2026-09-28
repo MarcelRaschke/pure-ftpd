@@ -754,7 +754,7 @@ void doreply(void)
     firstreply = lastreply = NULL;
 }
 
-/* Check whether a file name is valid. Files names starting
+/* Check whether a file name is valid. File names starting
  * with a dot are only allowed to root and to users
  * chroot()ed in their home directories -Jedi. */
 
@@ -1564,8 +1564,8 @@ static AuthResult pw_check(const char *account, const char *password,
 }
 
 /*
- * Check if an user belongs to the trusted group, either in his
- * primary group, or his supplementary groups. Root is always trusted.
+ * Check whether a user belongs to the trusted group, either through the
+ * primary group or supplementary groups. Root is always trusted.
  */
 
 static int check_trustedgroup(const uid_t uid, const gid_t gid)
@@ -2641,7 +2641,7 @@ void dodele(char *name)
      * there's a race. An attacker can rename the file between these two
      * system calls, so that a big file is lstat()ed, but a dummy tiny file is
      * unlinked. That way, an attacker could easily get extra quota.
-     * To defend against this attack, we rename the file to an unique dot-file
+     * To defend against this attack, we rename the file to a unique dot-file
      * (an atomic operation) . People subject to quotas can't access dot-files.
      * So we can securely stat it and unlink it. Having the pid in the file
      * name should be enough to avoid that two concurrent sessions create the
@@ -2696,8 +2696,8 @@ void dodele(char *name)
         }
         if (unlink(qtfile) < 0) {
             /*
-             * Race if rename() goes to an existing file.
-             * seems very difficult to exploit, though.
+             * A race can occur if rename() targets an existing file.
+             * It seems very difficult to exploit, though.
              * Does a perfect userland answer exist, after all?
              */
             (void) rename(qtfile, name);

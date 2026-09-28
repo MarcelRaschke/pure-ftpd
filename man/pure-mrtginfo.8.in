@@ -19,7 +19,7 @@ pure-mrtginfo \- provide an MRTG\-graphable user count for ftpd
 .B Pure-Mrtginfo
 counts the number of clients currently connected to
 .BR ftpd (8)
-and output the format in a format graphable by MRTG.
+and outputs data in a format graphable by MRTG.
 
 .SH "OPTIONS"
 \fBserver port\fR: defaults to 21.
@@ -27,7 +27,7 @@ and output the format in a format graphable by MRTG.
 .SH "FILES"
 .TP 
 .I /proc/net/tcp
-is used to count the connectiont to port 21.
+is used to count connections to port 21.
 .TP 
 .I /proc/sys/kernel/hostname
 is used to get the fully qualified hostname.
@@ -37,7 +37,7 @@ is used to get the uptime.
 
 .SH "MRTG"
 MRTG is a really nice package for graphing router traffic.  Mrtg can
-also graph other information is available via SNMP or by running a
+also graph other information available via SNMP or by running a
 program such as
 .BR pure-mrtginfo .
 The author of this program uses it to graph CPU load, /var usage etc.,

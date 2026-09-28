@@ -861,7 +861,7 @@ int main(int argc, char *argv[])
             goto nextone;
         }
         if (checkproc(scanned_entry->pid) == 0) {
-            /* still in the scoreboard, but no more process */
+            /* Still in the scoreboard, but no longer a process. */
             delete_file++;
             goto nextone;
         }

@@ -7,7 +7,7 @@ pure\-pwconvert \- Generate a virtual users file from system accounts
 pure\-pwconvert
 .SH "DESCRIPTION"
 .LP 
-This program scans system accounts (\fB/etc/passwd\fR) and outputs a FTP virtual users list, suitable to the \fBpure\-pw\fR command.
+This program scans system accounts (\fB/etc/passwd\fR) and outputs an FTP virtual-user list suitable for the \fBpure\-pw\fR command.
 .SH "FILES"
 .LP
 \fI/etc/passwd\fP

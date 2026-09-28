@@ -492,7 +492,7 @@ KERBEROS_V4 rejected as an authentication type
 
 Why and what do they mean?
 
-This is a Linux-specific instllation issue. It means that your command-line
+This is a Linux-specific installation issue. It means that your command-line
 FTP client isn't a normal one, but a Kerberos FTP client. You probably
 installed RPMs for Kerberos, although you don't use it.  These messages are
 harmless as Kerberos clients will fallback to normal FTP (after these
@@ -535,9 +535,9 @@ For instance, on a GNU/Linux system, add the path to libmysqlclient.so file
 * "Sorry, I can't trust you".
 
 -> When a user tries to log in, he gets "Sorry, I can't trust you". But his
-login/password pair is right. What wrong?
+login/password pair is right. What is wrong?
 
-That message can means two things:
+That message can mean two things:
 
 - The user has a shell that isn't listed in /etc/shells. You must add it,
 even if it's a fake shell like /bin/false . Also make sure that you have a
@@ -778,7 +778,7 @@ package called 'iproute2' to get them.
 
 /usr/local/sbin/pure-ftpd -p 10000:20000 -HBA
 
-5) Run the script you created in step 2. It it doesn't work, check that QOS
+5) Run the script you created in step 2. If it doesn't work, check that QOS
 support was compiled in your Linux kernel.
 
 6) Enjoy :)
@@ -805,7 +805,7 @@ kernels. Have a look at http://linux-ntfs.sf.net/ .
 
 * Slowdowns and lags.
 
--> Some users complains that transferring large files doesn't work. Transfers
+-> Some users complain that transferring large files doesn't work. Transfers
 are starting as expected, with a decent rate. But then, the speed dramatically
 decreases, there are some serious lags and they often must disconnect (or the
 client force them to do it, after a timeout) . The server is behind a firewall
@@ -832,8 +832,8 @@ sysctl -w net.ipv4.tcp_bic=0
 * Firewalls and TLS.
 
 -> My client is behind a stateful firewall doing applicative filtering (like
-IPTables with ip_conntrack_ftp or ip_nat_ftp) . Connections to an TLS
-enabled server doesn't work. Authentication works, but I'm unable to download
+IPTables with ip_conntrack_ftp or ip_nat_ftp) . Connections to a TLS-enabled
+server do not work. Authentication works, but I'm unable to download
 files nor list directories.
 
 First, try to force your client to use the passive mode. In active mode, the
@@ -865,7 +865,7 @@ firewalls and FTP don't mix very well.
 
 -> When clients connect with TLS encryption, listing directories and
 downloading files are slow operations. Nothing happens after a command is
-sent, things only start moving after a 5 secondes delay.
+sent, things only start moving after a 5-second delay.
 
 Check the host name of your certificate. It should be a fully-qualified host
 name and if possible, it shouldn't be a CNAME entry.
@@ -890,7 +890,7 @@ logfile you should see something like this in the logs:
 
 The STOU command tells the ftp client to begin the transmission of the file to
 the remote site; the remote filename picked by the ftp server will be unique
-within in the current directory that the ftp client is using. The response
+within the current directory that the ftp client is using. The response
 from the server will include the filename.
 
 The ftp client has an option like "create unique files" or "upload file with a

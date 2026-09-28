@@ -259,18 +259,18 @@ link to /var/incoming in every home directory) .
 This feature isn't enabled by default.
 
 --with-virtualhosts: support virtual hosting. It means that you can have
-different anonymouns FTP areas for each IP address. If your server has only
+different anonymous FTP areas for each IP address. If your server has only
 one IP address, you don't need that feature. But if you have multiple IP
 addresses and if you want a client that connects to IP xxx to get
 the content of /etc/pure-ftpd/xxx/ instead of ~ftp/ , enable this option.
-And read the the "VIRTUAL SERVERS" section at the end of this file.
+And read the "VIRTUAL SERVERS" section at the end of this file.
 
 --with-welcomemsg: read 'welcome.msg' files for compatibility with some
 other FTP servers. This is a security flaw (anonymous users may upload
 'welcome.msg' files to add random banners) . Pure-ftpd uses '.banner' files
 by default.
 
---with-boring: display boring "professionnal-looking" messages.
+--with-boring: display boring "professional-looking" messages.
 
 --with-bonjour: enable Bonjour support on MacOS X (see the -v switch).
 
@@ -333,7 +333,7 @@ flag.
 
 --without-shadow: ignore the shadow passwords, even though they are
 auto-detected. Usually a bad idea, unless you use PAM, LDAP or SQL.
-Pure-FTPd support expiration dates of shadow passwords (both for accounts
+Pure-FTPd supports expiration dates of shadow passwords (both for accounts
 and passwords) .
 
 --without-standalone: the FTP server can normally run in standalone-mode
@@ -386,7 +386,7 @@ server is as easy as typing:
 In the following examples, we will assume that the 'pure-ftpd' file is
 located in /usr/local/sbin. This is the default if you compiled the server
 from the source code tarball. But as I said earlier in this document, if
-you installed a binary package (RPM, SLP, DEB, TGZ), the server maybe
+you installed a binary package (RPM, SLP, DEB, TGZ), the server may be
 installed in /usr/sbin/. So just replace '/usr/local/sbin/pure-ftpd' with
 '/usr/sbin/pure-ftpd'.
 
@@ -424,7 +424,7 @@ configuration. Anonymous FTP logins will be allowed if there's a system
 account called 'ftp' and every user of your system will be able to access
 the FTP server using their regular login/password pair.
 
-If you need to tweak that default configuration, other command-lines options
+If you need to tweak that default configuration, other command-line options
 can be added. For instance:
 
 /usr/local/sbin/pure-ftpd -c 50 &
@@ -450,7 +450,7 @@ root     15214  0.0  0.5  1340  672 ?        S    13:56   0:00 pure-ftpd [DOWNLO
 after the next connection.
 [IDLE] shows a client with no transfer activity.
 [DOWNLOADING] shows a client downloading a file.
-[UPLOADING] show a client uploading a file.
+[UPLOADING] shows a client uploading a file.
 
 For easy scripting, the file '/var/run/pure-ftpd.pid' is created and it
 always contains the PID of the main server process.
@@ -561,7 +561,7 @@ replace 'tcpserver' with its full path (eg. '/usr/local/bin/tcpserver') .
 The previous steps should be enough to get a running FTP server. But you can
 add some command-line arguments to change its behavior. These arguments have
 to be added after the pure-ftpd path in your super-server configuration.
-For instance, you want to add the '-s' and '-a 42' flags. Here are what the
+For instance, you want to add the '-s' and '-a 42' flags. Here is what the
 configuration lines will look like in your super-server:
 
 - Inetd:
@@ -640,7 +640,7 @@ symbolic links are shown as real files/directories. EPSV is disabled.
 
 - '-B': Have the standalone server start in background (daemonization).
 
-- '-c <number of clients>': Allow a maximum of clients to be connected. For
+- '-c <number of clients>': Allow a maximum number of clients to be connected. For
 instance '-c 42' will limit access to simultaneous 42 clients. There is a
 50 client limit by default.
 
@@ -769,7 +769,7 @@ the Apache web server in default configuration.
 
 If you use '-O stats:/var/log/pureftpd.log' to your starting options,
 Pure-FTPd will create log files in a special format, designed for statistical
-reports. The Stats format is compact, more efficient and more accurate that
+reports. The Stats format is compact, more efficient and more accurate than
 CLF and the old broken "xferlog" format.
 
 The Stats format is:
@@ -780,7 +780,7 @@ session. <file> is unquoted, but it's always the last element of a log line.
 "U" means "Upload" and "D" means "Download".
 
 Warning: the session id is only designed for statistics purposes. While it's
-always an unique string in the real world, it's theoretically possible to have
+always a unique string in the real world, it's theoretically possible to have
 it non unique in very rare conditions. So don't rely on it for critical
 missions.
 
@@ -813,7 +813,7 @@ connect.
 'wheel') have no ratio.
 
 - '-r': Never overwrite existing files. Uploading a file whose name
-already exists cause an automatic rename. Files are called xyz, xyz.1, xyz.2,
+already exists causes an automatic rename. Files are called xyz, xyz.1, xyz.2,
 xyz.3, etc.
 
 Tip: if you compile with 'make AUTORENAME_REVERSE_ORDER=1' , the naming
@@ -1202,7 +1202,7 @@ If ratios should apply to everyone (anon and non-anon), use the '-Q' option
 the same way.
 
 Note: 'root' never has ratios. Neither have users of the trusted group when
-'-Q' in used with the '-a' or '-A' option.
+'-Q' is used with the '-a' or '-A' option.
 
 
    ------------------------ BANDWIDTH THROTTLING ------------------------
@@ -1233,7 +1233,7 @@ bandwidth you have.
 
 * It is possible to have different bandwidth limits for uploads and for
 downloads. '-t' and '-T' can indeed be followed by two numbers delimited by
-a column (':') . The first number is the upload bandwidth and the next one
+a colon (':') . The first number is the upload bandwidth and the next one
 applies only to downloads. One of them can be left blank which means infinity.
 
 Example 1: 256 KB/s for uploads, 64 KB/s for downloads
@@ -1534,9 +1534,9 @@ the same system uid.
 quotas.
 
 However, virtual quotas are slower and can't be as reliable as kernel quotas,
-so don't trust them ultimately, they are probably races allowing to bypass
-them. Also the filesystem users directories are on must properly support file
-locking.
+so don't trust them completely: there are probably races that allow them to be
+bypassed. Also, the filesystems hosting users' directories must properly
+support file locking.
 
 Virtual quotas are implemented in Pure-FTPd as simple files called
 ".ftpquota", located in the home directory of chrooted users. This file only
@@ -1567,7 +1567,7 @@ not the case, you must run the "pure-quotacheck" utility to create an
 initial ".ftpquota" file.
 
 "pure-quotacheck" is a tool that computes the size and the number of files
-in a directory and create a ".ftpquota" file with this info.
+in a directory and creates a ".ftpquota" file with this info.
 
 The syntax is:
 
@@ -1656,13 +1656,13 @@ is compiled with PAM support and Unix is assumed by default otherwise.
      ------------------------ DIRECTORY ALIASES ------------------------
 
 
-Directory aliases provides "shortcuts" for the "cd" command. For instance,
+Directory aliases provide "shortcuts" for the "cd" command. For instance,
 if you define an alias called "pictures" for "/usr/misc/pictures", when an
 user will type "cd pictures" and if no real "pictures" directory exists, he
 will be automatically redirected to "/usr/misc/pictures". Unlike symbolic
 links, "cd pictures" will work from any directory. Tildes are *not* expanded.
 
-a user can get the list of available aliases with the following command:
+A user can get the list of available aliases with the following command:
 
 SITE ALIAS
 
@@ -1696,7 +1696,7 @@ pureftpd-port
 
 When privilege separation is enabled, each session will spawn two processes :
 a "privileged" process running as root, but that can only do very basic
-and trusted actions (binding a port and remove the ftpwho scoreboard) and
+and trusted actions (binding a port and removing the ftpwho scoreboard) and
 the "client" process. The "client" process definitely revokes all privileges
 after authentication and chroot() and punctually communicates with the
 parent over a private channel.
@@ -1715,7 +1715,7 @@ OpenBSD, DragonflyBSD, FreeBSD and Linux are known to be safe.
 
 
 If you are going to use Pure-FTPd on a highly loaded server, here are some
-hints to get the best performances:
+hints to get the best performance:
 
 - Compile with:
 
@@ -1831,7 +1831,7 @@ this is intentional. To restart an ASCII transfer, the file has to be
 read and analyzed byte by byte. It can be very long and by sending two
 trivial commands, a client can completely kill a server (take a lot of CPU and
 disk resources) . And there's no workaround.
-Another point is that while RFC describe a way to resume ASCII transfers,
+Another point is that while RFCs describe a way to resume ASCII transfers,
 many clients and servers implement them in another way. The result is that
 resumed ASCII transfers can lead to data corruption. Some major servers
 didn't follow RFC, so some clients did the same mistake to support these

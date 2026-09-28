@@ -14,14 +14,14 @@
  * - floating point frac restrictions ("%.2f") .
  * - combinations of everything ("%-8.5llo") .
  *
- * Nothing more. Return value is <size> if an overflow occurred, or the
+ * Nothing more. The return value is <size> if an overflow occurred, or the
  * copied size if no overflow occurred (mostly compatible with C99
  * snprintf() behavior, except that it doesn't return any value larger
  * than <size>).
  *
- * These functions are portable, they are twice faster than their BSD and GNU
+ * These functions are portable and twice as fast as their BSD and GNU
  * implementations, and they don't tamper with errno. But they only know
- * a limited subset of what a full-implementation is supposed to do.
+ * a limited subset of what a full implementation is supposed to do.
  *
  * It's enough for Pure-FTPd, though.
  */
@@ -37,7 +37,7 @@
 #if !defined(HAVE_SNPRINTF) || !defined(HAVE_VSNPRINTF)
 
 /*
- * add a string to the buffer
+ * Add a string to the buffer.
  * \param zero if this is non-zero, we pad with zeroes, else we pad
  * with a blank.
  * \param maxlen sets the maximum size of the string to be added
@@ -49,7 +49,7 @@ static void fakesnprintf_addstr(char **str, size_t *size, const char *pnt,
 {
     size_t maxlenc;
 
-    /* prepare to cut off string if longer than maxlen */
+    /* Prepare to truncate the string if it is longer than maxlen. */
     maxlenc = strlen(pnt);
     if (maxlen > 0U && maxlen < maxlenc) {
         maxlenc = maxlen;

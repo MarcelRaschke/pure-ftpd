@@ -9,10 +9,10 @@
 
 
 PureDB is a portable and tiny set of libraries for creating and reading
-constant databases. It manages data files that contains text or binary
+constant databases. It manages data files that contain text or binary
 key/data pairs of arbitrary sizes. Lookups are very fast (normally only one
 disk access to match a hash value), overhead is low (a database is 1028
-bytes plus only 16 extra bytes per record), multiple concurrent read access
+bytes plus only 16 extra bytes per record), multiple concurrent read accesses
 are supported, databases can be up to 4 Gb long, and they are portable
 across architectures. 
 
@@ -48,7 +48,7 @@ and/or
 #include <puredb_write.h>
 
 If your application only reads PureDB databases, just include the first
-header. If it only writes databases, just include the second one. It it does
+header. If it only writes databases, just include the second one. If it does
 both, include both.
 
 The same thing goes for linker options: you have to link against
@@ -81,7 +81,7 @@ int puredbw_open(PureDBW * const dbw,
                  const char * const file_data,
                  const char * const file_final);
 
-This function takes a point to an already allocated PureDBW structure, and
+This function takes a pointer to an already allocated PureDBW structure, and
 three file names. file_index and file_data are temporary files, needed to
 create the database. They will be automatically deleted, and the final
 database will atomically be stored in file_final.
@@ -106,7 +106,7 @@ int puredbw_add_s(PureDBW * const dbw,
                   const char * const key, const char * const content);
 
 This function is a shortcut to puredbw_add(), designed to store 0-terminated
-strings. It's equivalent to call puredbw_add() with strlen(key) and
+strings. It's equivalent to calling puredbw_add() with strlen(key) and
 strlen(content) as parameters 3 and 5.
 
 Return value: 0 if everything is ok, a negative value if something went wrong.
@@ -116,8 +116,8 @@ Return value: 0 if everything is ok, a negative value if something went wrong.
 int puredbw_close(PureDBW * const dbw);
 
 This function performs a quick sort of the hashed values, writes them to the
-disk, merges index and data files, rename the result to the final file name
-and delete the old files. You must call this after having inserted all
+disk, merges index and data files, renames the result to the final file name
+and deletes the old files. You must call this after having inserted all
 values in the database. 
 
 Return value: 0 if everything is ok, a negative value if something went wrong.
@@ -200,7 +200,7 @@ int puredb_find(PureDB * const db, const char * const tofind,
                 const size_t tofind_len, off_t * const retpos, 
                 size_t * const retlen);
 
-This function looks the database for a key matching tofind, whose length is
+This function looks in the database for a key matching tofind, whose length is
 tofind_len. After a successful match, retpos contains the offset to the
 first byte of the matching data, and retlen is the length of the data.
 
@@ -248,7 +248,7 @@ Returns the file descriptor opened for the database, just in case you want
 to read the data by yourself. It can be interesting if the data is too large
 to be stored in memory.
 
-Return value: a file descriptor. or -1 if none was allocated (error).
+Return value: a file descriptor, or -1 if none was allocated (error).
 
 
 
@@ -302,7 +302,7 @@ int main(void)
 }
 
 
-If you have question, suggestions or patches, feel free to get in touch with
+If you have questions, suggestions or patches, feel free to get in touch with
 me. Newbies and silly ideas are welcome.
 
 

@@ -15,7 +15,7 @@ After a successful upload, the file name is written to the pipe.
 .SH "OPTIONS"
 .TP
 \fB\-B\fR
-Daemonize the process and fork it in background.
+Daemonize the process and fork it into the background.
 .TP
 \fB\-g\fR <\fIgid\fP>
 Switch the group ID to <\fIgid\fP>.
@@ -34,7 +34,7 @@ Switch the user ID to <\fIuid\fP>.
 .LP
 When the upload script is run, the name of the newly uploaded file is the
 first argument passed to the script (referenced as $1 by most shells) . Some
-environment variables are also filled by useful info about the file.
+environment variables are also filled with useful information about the file.
 \fB\UPLOAD_SIZE\fR
 The size of the file, in bytes.
 \fB\UPLOAD_PERMS\fR
@@ -46,7 +46,7 @@ The numerical GID of the owner.
 \fB\UPLOAD_USER\fR
 The login of the owner.
 \fB\UPLOAD_GROUP\fR
-The group name the files belongs to.
+The group name to which the file belongs.
 \fB\UPLOAD_VUSER\fR
 The full user name, or the virtual user name (127 chars max) .
 .SH "FILES"
@@ -56,7 +56,7 @@ The full user name, or the virtual user name (127 chars max) .
 \fI@LOCALSTATEDIR@/run/pure\-uploadscript.pid\fP 
 .SH "SECURITY"
 .LP 
-\fBpure\-ftpd\fR and \fBpure\-uploadscript\fR are trying to limit security implications of such a feature.
+\fBpure\-ftpd\fR and \fBpure\-uploadscript\fR limit the security implications of this feature.
 .TP 
 \- The pipe can only be created and opened by root. It must have perms 600, with uid 0, or it will be ignored.
 .TP 
@@ -64,11 +64,11 @@ The full user name, or the virtual user name (127 chars max) .
 .TP 
 \- UID and GID are set just after parsing command\-line options, and \fBpure\-uploadscript\fR never gets back supervisor privileges.
 .TP 
-\- Descriptors to the pipe are never passed to external programs/scripts. So when UID switched, the target user can't mess the pipe.
+\- Descriptors to the pipe are never passed to external programs/scripts. When the UID is switched, the target user cannot modify the pipe.
 .TP 
-\- Only regular files are processed, control characters are rejected, and a header+footer avoid partial file names.
+\- Only regular files are processed, control characters are rejected, and a header and footer prevent partial file names.
 .TP 
-\- Two external programs/scripts can't run at the same time. Uploads are always processed sequentially, in chronological order. This is to avoid denial\-of\-services by issuing a lot of simultaneous STOR commands in order to launch a fork bomb on the server. For this reason, your programs shouldn't take a long time to complete (but they can run themselves in background) .
+\- Two external programs/scripts cannot run at the same time. Uploads are always processed sequentially, in chronological order. This prevents denial\-of\-service attacks that issue many simultaneous STOR commands to launch a fork bomb on the server. For this reason, your programs should not take a long time to complete, although they can run themselves in the background.
 .SH "EXAMPLES"
 .LP 
 A sample script could be:

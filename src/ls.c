@@ -511,7 +511,7 @@ static void outputfiles(int f, void * const tls_fd)
     filenames = 0U;
 }
 
-/* functions to to sort for qsort() */
+/* Functions to sort for qsort() */
 static int cmp(const void * const a, const void * const b)
 {
     return strcmp(FI_NAME((const PureFileInfo *) a),
